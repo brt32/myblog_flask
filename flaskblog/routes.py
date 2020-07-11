@@ -6,6 +6,7 @@ from flaskblog import app, db, bcrypt
 from flaskblog.forms import RegistrationForm, LoginForm, UpdateAccountForm, PostForm
 from flaskblog.models import User, Post
 from flask_login import login_user, current_user, logout_user, login_required
+from sqlalchemy import or_
 
 
 @app.route('/')
@@ -139,3 +140,18 @@ def delete_post(post_id):
     db.session.commit()
     flash('Your post has been deleted!', 'success')
     return redirect(url_for('home'))
+
+
+@app.route('/search', methods=['GET', 'POST'])
+def search():
+    if request.method == 'POST':
+        form = request.form
+        search_value = form['search_string']
+        search = "%{}%".format(search_value)
+        results = Post.query.filter(or_(Post.title.like(search),
+                                        Post.content.like(search))).all()
+        if results:
+            return render_template('search_results.html', results=results)
+        else:
+            flash('Post Title Not Found!', 'danger')
+            return redirect(url_for('home'))

@@ -78,9 +78,9 @@
                 </div>
             </div>
             <nav class="navbar fixed-bottom navbar-light bg-light">
-                <form class="form-inline mt-2 mt-md-0">
-                    <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                <form class="form-inline mt-2 mt-md-0" method="POST">
+                    <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search" name="search_string">
+                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit" formaction="/search" value="Search">Search</button>
                 </form>
                 <span class="navbar-text">Created by: Bartłomiej Proczkowski</span>
             </nav>
