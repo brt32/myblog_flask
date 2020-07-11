@@ -153,5 +153,5 @@ def search():
         if results:
             return render_template('search_results.html', results=results)
         else:
-            flash('Post Title Not Found!', 'danger')
+            flash('Post Not Found!', 'danger')
             return redirect(url_for('home'))
