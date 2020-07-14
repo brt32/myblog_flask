@@ -58,6 +58,12 @@
                         {{ form.confirm_password(class="form-control form-control-lg") }}
                     {% endif %}
                 </div>
+                {{ form.recaptcha }}
+                {% for error in form.recaptcha.errors %}
+                <ul>
+                    <li style="color: red;">{{ error }}</li>
+                {% endfor %}
+                </ul>
             </fieldset>
             <div class="form-group">
                 {{ form.submit(class="btn btn-outline-info") }}

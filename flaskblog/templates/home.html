@@ -1,5 +1,6 @@
 {% extends "layout.html" %}
 {% block content %}
+    <legend class="border-bottom mb-4">Wykaz artykułów:</legend>
     {% for post in posts|reverse %}
         <article class="media content-section">
           <img class="rounded-circle article-img" src="{{ url_for('static', filename='profile_pics/' + post.author.image_file) }}">
