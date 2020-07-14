@@ -155,3 +155,5 @@ def search():
         else:
             flash('Post Not Found!', 'danger')
             return redirect(url_for('home'))
+    else:
+        return redirect(url_for('home'))
